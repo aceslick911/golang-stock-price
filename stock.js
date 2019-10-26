@@ -154,13 +154,18 @@ const testCases = {
     "random_full_day": generated_data.data
 };
 
+const colours = { red: "\x1b[31m", green: "\x1b[32m", reset: "\x1b[0m" }
+
 const validateResult = (testFunction, testCase, input, expected) => {
     const actual = testFunction(input);
-    if (expected[0] === actual[0] && expected[1] === actual[1]) {
-        console.log("\x1b[32m", testCase, "Valid solution", actual, expected, "\x1b[0m")
-    } else {
-        console.error("\x1b[31m", testCase, "Invalid solution", actual, "expected:", expected, "\x1b[0m");
-    }
+
+    console.log(
+        expected[0] === actual[0] && expected[1] === actual[1] ? colours.green : colours.red, //Green valid, Red invalid
+        testCase,
+        actual,
+        expected,
+        colours.reset
+    )
 }
 
 function validateFunction(func) {
@@ -168,6 +173,13 @@ function validateFunction(func) {
     for (const testcase in testCases) {
         validateResult(testFunction, testcase, testCases[testcase].input, testCases[testcase].expected);
     }
+}
+
+for (testcase in testCases) {
+    const tcase = testCases[testcase];
+    const min = tcase.input.reduce((prev, curr) => Math.min(prev, curr))
+    const max = tcase.input.reduce((prev, curr) => Math.max(prev, curr))
+    console.log(`Test: ${testcase} ${tcase.input.length} data points, min:${min} max:${max} expected:[${tcase.expected}]`)
 }
 
 for (solution in solutions) {

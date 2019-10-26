@@ -1,6 +1,6 @@
 const solutions = {
 
-    // First attempt at algorithm, O(N) complexity by using best and candidate variables
+    // First attempt at algorithm, O(N) complexity by using best and candidate variables (Success 40%)
     get_max_profit_angelo1: (prices) => {
 
         let best = { buy: prices[0], sell: prices[1] };
@@ -20,7 +20,7 @@ const solutions = {
         return [best.buy, best.sell]
     },
 
-    // Removed else statements to allow smaller datasets to work
+    // Removed else statements to allow smaller datasets to work (Success ++)
     get_max_profit_FIXEDELSE: (prices) => {
 
         let best = { buy: prices[0], sell: prices[1] };
@@ -40,7 +40,7 @@ const solutions = {
         return [best.buy, best.sell]
     },
 
-    // Used negative and positive infinity to reduce READs
+    // Used negative and positive infinity to reduce READs (Success =)
     get_max_profit_FIXEDELSE_INIT: (prices) => {
 
         let best = { buy: Number.POSITIVE_INFINITY, sell: Number.NEGATIVE_INFINITY };
@@ -64,13 +64,14 @@ const solutions = {
         return [best.buy, best.sell]
     },
 
+    // Initialize to the first value then skip it during loop (Success --)
     get_max_profit_FIXEDELSE_INIT_2: (prices) => {
 
 
         let best = { buy: prices[0], sell: prices[1] };
         let candidate = { buy: Number.POSITIVE_INFINITY, sell: Number.NEGATIVE_INFINITY };
 
-        for (var i = 0; i < prices.length; i++) {
+        for (var i = 1; i < prices.length; i++) {
             if (prices[i] < candidate.buy) {
                 candidate.buy = prices[i];
                 candidate.sell = Number.NEGATIVE_INFINITY;
@@ -91,7 +92,8 @@ const solutions = {
         return [best.buy, best.sell]
     },
 
-
+    // Use profit % ratio to determine if case is better instead of just absolute price diff
+    // This makes sense !!IF!! you would prefer to make a higher % yeild from invested ($1-2 = 100%) than absolute yield($1000-$1001 1%)
     get_max_profit_FIXEDELSE_INIT_2_DIV: (prices) => {
 
         let best = { buy: prices[0], sell: prices[1] };
@@ -154,6 +156,10 @@ const testCases = {
         input: [5, 4, 3, 2, 1],
         expected: [5, 4]
     },
+    "yield_test": {
+        input: [100, 104, 1, 4], //Prefer 1-4 (+400%) over 100-104 (4%)
+        expected: [1, 4]
+    },
     "random_full_day": generated_data.data
 };
 
@@ -168,8 +174,8 @@ const validateResult = (testFunction, testCase, input, expected) => {
     console.log(
         success ? colours.green : colours.red, //Green valid, Red invalid
         testCase,
-        actual,
-        expected,
+        `[ ${actual} ] ( $${Math.abs(actual[1] - actual[0])} , ${Math.round(Math.abs(actual[1] / actual[0] * 100))}% )`,
+        `[ ${expected} ] ( $${Math.abs(expected[1] - expected[0])} , ${Math.round(Math.abs(expected[1] / expected[0] * 100))}% )`,
         colours.reset
     )
 }
@@ -185,13 +191,13 @@ for (testcase in testCases) {
     const tcase = testCases[testcase];
     const min = tcase.input.reduce((prev, curr) => Math.min(prev, curr))
     const max = tcase.input.reduce((prev, curr) => Math.max(prev, curr))
-    console.log(`Test: ${testcase} ${tcase.input.length} data points, min:${min} max:${max} expected:[${tcase.expected}]`)
+    console.log(`Test: ${testcase} ${tcase.input.length} data points, min: ${min} max: ${max} expected: [${tcase.expected}]`)
 }
 
 for (solution in solutions) {
     console.log("Solution", solution);
     stats = { success: 0, fail: 0 } // Reset stats
     validateFunction(solutions[solution]);
-    console.log(`${stats.success} passed, ${stats.fail} failed, ${stats.success / (stats.success + stats.fail) * 100}% success`)
+    console.log(`${stats.success} passed, ${stats.fail} failed, ${stats.success / (stats.success + stats.fail) * 100} % success`)
     console.log("--");
 }

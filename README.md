@@ -9,12 +9,13 @@ Languages used: Javascript, GoLang.
 I've used javascript to quickly test some implementations of an algorithm then my goal is to write production quality code in goLang.
 
 I first started with a simple O(N) implementation with:
-- A best variable to store the best known buy and sell values
-- A candidate variable to use the current price and test against the best variable
+- A single 1D loop of the prices array
+- A `best` variable to store the best known buy and sell values
+- A `candidate` variable to use the current price and test against the best variable
 
 This algorithm was then improved by:
 - Removing the "Else if" statement to allow compatibility with small datasets
-- Initializing to negatie and positive infinity to remove total number of reads
+- Initializing `candidate` and `best` varialbes to negative and positive infinity to remove total number of reads
 
 I then noticed that in some cases since this is stock price movement, that I personally would prefer to get a higher % return on my investment rather than the same increase for a much more expensive stock.
 

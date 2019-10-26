@@ -1,5 +1,6 @@
 const solutions = {
 
+    // First attempt at algorithm, O(N) complexity by using best and candidate variables
     get_max_profit_angelo1: (prices) => {
 
         let best = { buy: prices[0], sell: prices[1] };
@@ -19,7 +20,7 @@ const solutions = {
         return [best.buy, best.sell]
     },
 
-
+    // Removed else statements to allow smaller datasets to work
     get_max_profit_FIXEDELSE: (prices) => {
 
         let best = { buy: prices[0], sell: prices[1] };
@@ -39,6 +40,7 @@ const solutions = {
         return [best.buy, best.sell]
     },
 
+    // Used negative and positive infinity to reduce READs
     get_max_profit_FIXEDELSE_INIT: (prices) => {
 
         let best = { buy: Number.POSITIVE_INFINITY, sell: Number.NEGATIVE_INFINITY };
@@ -63,6 +65,7 @@ const solutions = {
     },
 
     get_max_profit_FIXEDELSE_INIT_2: (prices) => {
+
 
         let best = { buy: prices[0], sell: prices[1] };
         let candidate = { buy: Number.POSITIVE_INFINITY, sell: Number.NEGATIVE_INFINITY };
@@ -156,11 +159,14 @@ const testCases = {
 
 const colours = { red: "\x1b[31m", green: "\x1b[32m", reset: "\x1b[0m" }
 
+let stats = { success: 0, fail: 0 }
+
 const validateResult = (testFunction, testCase, input, expected) => {
     const actual = testFunction(input);
-
+    const success = expected[0] === actual[0] && expected[1] === actual[1];
+    success ? stats.success++ : stats.fail++;
     console.log(
-        expected[0] === actual[0] && expected[1] === actual[1] ? colours.green : colours.red, //Green valid, Red invalid
+        success ? colours.green : colours.red, //Green valid, Red invalid
         testCase,
         actual,
         expected,
@@ -184,6 +190,8 @@ for (testcase in testCases) {
 
 for (solution in solutions) {
     console.log("Solution", solution);
+    stats = { success: 0, fail: 0 } // Reset stats
     validateFunction(solutions[solution]);
+    console.log(`${stats.success} passed, ${stats.fail} failed, ${stats.success / (stats.success + stats.fail) * 100}% success`)
     console.log("--");
 }

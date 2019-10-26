@@ -1,0 +1,13 @@
+{
+  "name": "lattitude-test",
+  "version": "1.0.0",
+  "description": "trading test",
+  "main": "stock.js",
+  "repository": "https://github.com/aceslick911/lattitude-test.git",
+  "author": "Angelo Perera <angeloperera@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "asciichart": "^1.5.9"
+  }
+}

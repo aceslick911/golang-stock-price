@@ -133,7 +133,6 @@ const prices_invalid = [
 ];
 
 const generated_data = require("./full_day_random");
-console.log(generated_data.data);
 
 const testCases = {
     "basic": {

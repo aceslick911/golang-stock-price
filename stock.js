@@ -1,5 +1,3 @@
-const prices = [10, 7, 12, 5, 8, 11, 9];
-
 const solutions = {
 
     get_max_profit_angelo1: (prices) => {
@@ -134,6 +132,9 @@ const prices_invalid = [
     [1, null, 3],
 ];
 
+const generated_data = require("./full_day_random");
+console.log(generated_data.data);
+
 const testCases = {
     "basic": {
         input: [10, 7, 12, 5, 8, 11, 9],
@@ -151,6 +152,7 @@ const testCases = {
         input: [5, 4, 3, 2, 1],
         expected: [5, 4]
     },
+    "random_full_day": generated_data.data
 };
 
 const validateResult = (testFunction, testCase, input, expected) => {

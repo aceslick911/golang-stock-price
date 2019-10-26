@@ -41,3 +41,24 @@ GoLang:
 > go build && ./lattitude-test
 
 Tests:
+## basic
+        input: [10, 7, 12, 5, 8, 11, 9],
+        expected: [5, 11]
+## mini 
+        input: [10, 7, 12],
+        expected: [7, 12]
+    
+## ascending 
+        input: [1, 2, 3, 4, 5],
+        expected: [1, 5]
+    
+## descending 
+        input: [5, 4, 3, 2, 1],
+        expected: [5, 4]
+    
+## yield_test 
+        input: [100, 104, 1, 3], //Prefer 1-4 ($4 but +300%) over 100-104 ($4 but only 4%)
+        expected: [1, 4]
+    
+## random_full_day
+Used a random generator to create a [JSON of a full day trading](full_day_random.json)

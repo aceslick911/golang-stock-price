@@ -157,7 +157,7 @@ const testCases = {
         expected: [5, 4]
     },
     "yield_test": {
-        input: [100, 104, 1, 4], //Prefer 1-4 (+400%) over 100-104 (4%)
+        input: [100, 104, 1, 3], //Prefer 1-3 (+300%) over 100-104 (4%)
         expected: [1, 4]
     },
     "random_full_day": generated_data.data

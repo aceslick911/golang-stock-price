@@ -118,12 +118,13 @@ const solutions = {
             }
         }
         return [best.buy, best.sell]
-    }
+    },
+
+    best_price: require('./best_price').best_price
 
 
 }
 
-const prices_too_short = [1];
 const prices_invalid = [
     {},
     null,
@@ -132,6 +133,7 @@ const prices_invalid = [
     ["x", "x"],
     [1, "x"],
     ["x", 1],
+    [],
     [null, null],
     [1, 2, null],
     [1, null, 3],
@@ -187,6 +189,19 @@ function validateFunction(func) {
     }
 }
 
+function checkInvalidCases(func) {
+    for (invalidCase of prices_invalid) {
+        try {
+            const result = func(invalidCase);
+            console.log(colours.red, "Did not throw for ", invalidCase, "with", result, result, colours.reset)
+        } catch (exception) {
+
+            console.log(colours.green, "Threw for ", invalidCase, "with", exception.message, colours.reset)
+        }
+
+    }
+}
+
 for (testcase in testCases) {
     const tcase = testCases[testcase];
     const min = tcase.input.reduce((prev, curr) => Math.min(prev, curr))
@@ -199,5 +214,6 @@ for (solution in solutions) {
     stats = { success: 0, fail: 0 } // Reset stats
     validateFunction(solutions[solution]);
     console.log(`${stats.success} passed, ${stats.fail} failed, ${stats.success / (stats.success + stats.fail) * 100} % success`)
+    checkInvalidCases(solutions[solution])
     console.log("--");
 }

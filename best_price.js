@@ -5,7 +5,7 @@ exports.best_price =
         if (prices == null || !Array.isArray(prices) || prices.length < 2 || prices.filter(i => {
 
             if (isNaN(i) || i == null) {
-                throw "Invalid character found " + i;
+                throw new Error("Invalid character found " + i);
             }
             return i != null && !isNaN(i);
         }

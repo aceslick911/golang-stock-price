@@ -1,6 +1,18 @@
 exports.best_price =
     (prices) => {
 
+        //Validate input is array of integers
+        if (prices == null || !Array.isArray(prices) || prices.length < 2 || prices.filter(i => {
+
+            if (isNaN(i) || i == null) {
+                throw "Invalid character found " + i;
+            }
+            return i != null && !isNaN(i);
+        }
+        ).length < 2) {
+            throw new Error("Must supply an array of integers as parameter. Not valid:" + prices);
+        }
+
         let best = { buy: prices[0], sell: prices[1] };
         let candidate = { buy: Number.POSITIVE_INFINITY, sell: Number.NEGATIVE_INFINITY };
 

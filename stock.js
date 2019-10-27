@@ -170,16 +170,21 @@ const colours = { red: "\x1b[31m", green: "\x1b[32m", reset: "\x1b[0m" }
 let stats = { success: 0, fail: 0 }
 
 const validateResult = (testFunction, testCase, input, expected) => {
-    const actual = testFunction(input);
-    const success = expected[0] === actual[0] && expected[1] === actual[1];
-    success ? stats.success++ : stats.fail++;
-    console.log(
-        success ? colours.green : colours.red, //Green valid, Red invalid
-        testCase,
-        `[ ${actual} ] ( $${Math.abs(actual[1] - actual[0])} , ${Math.round(Math.abs(actual[1] / actual[0] * 100))}% )`,
-        `[ ${expected} ] ( $${Math.abs(expected[1] - expected[0])} , ${Math.round(Math.abs(expected[1] / expected[0] * 100))}% )`,
-        colours.reset
-    )
+    try {
+        const actual = testFunction(input);
+
+        const success = expected[0] === actual[0] && expected[1] === actual[1];
+        success ? stats.success++ : stats.fail++;
+        console.log(
+            success ? colours.green : colours.red, //Green valid, Red invalid
+            testCase,
+            `[ ${actual} ] ( $${Math.abs(actual[1] - actual[0])} , ${Math.round(Math.abs(actual[1] / actual[0] * 100))}% )`,
+            `[ ${expected} ] ( $${Math.abs(expected[1] - expected[0])} , ${Math.round(Math.abs(expected[1] / expected[0] * 100))}% )`,
+            colours.reset
+        )
+    } catch (exception) {
+        console.log("Exception occurred", exception);
+    }
 }
 
 function validateFunction(func) {

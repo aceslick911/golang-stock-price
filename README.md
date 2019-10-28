@@ -32,20 +32,30 @@ Finally, the algorithm was re-written in goLang
 ## How to run
 
 Node:
-> yarn install && yarn dev
+```
+yarn install && yarn dev
+```
 
 
 GoLang:
-> go build -o bin/lattitude src/go/stock.go && bin/lattitude
+```
+go build -o bin/lattitude src/go/stock.go && bin/lattitude
+```
 
 For tests & coverage:
-> go test ./... && go test ./... --coverprofile out/coverage.dat && go tool cover -html=out/coverage.dat -o out/cover.html
+```
+go test ./... && go test ./... --coverprofile out/coverage.dat && go tool cover -html=out/coverage.dat -o out/cover.html
+```
 
 Then open out/cover.html
 
 Docker:
-> docker build --rm . -t stock
-> docker run -i --rm --name stock stock sh
+
+```
+docker build --rm . -t stock
+docker run -i --rm --name stock stock sh
+```
+
 
 ## Tests
 ### basic

@@ -38,28 +38,28 @@ Node:
 
 
 GoLang:
-> go build -o bin/lattitude src/go/stock.go && bin/lattitude 
+> go build -o bin/lattitude src/go/stock.go && bin/lattitude
 
 For coverage:
-> go test --coverprofile coverage.dat && go tool cover -html=coverage.dat -o cover.html
+> go test ./... --coverprofile out/coverage.dat && go tool cover -html=out/coverage.dat -o out/cover.html
 
 Tests:
-## basic
+### basic
         input: [10, 7, 12, 5, 8, 11, 9],
         expected: [5, 11]
-## mini 
+### mini 
         input: [10, 7, 12],
         expected: [7, 12]
     
-## ascending 
+### ascending 
         input: [1, 2, 3, 4, 5],
         expected: [1, 5]
     
-## descending 
+### descending 
         input: [5, 4, 3, 2, 1],
         expected: [5, 4]
     
-## yield_test 
+### yield_test 
         input: [100, 104, 1, 3], //Prefer 1-4 ($4 but +300%) over 100-104 ($4 but only 4%)
         expected: [1, 4]
     

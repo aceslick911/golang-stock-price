@@ -39,6 +39,4 @@ func get_max_profit(prices []int) []int {
 }
 
 func main() {
-	prices := []int{10, 7, 12, 5, 8, 11, 9}
-	get_max_profit(prices)
 }

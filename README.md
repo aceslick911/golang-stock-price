@@ -40,10 +40,12 @@ Node:
 GoLang:
 > go build -o bin/lattitude src/go/stock.go && bin/lattitude
 
-For coverage:
-> go test ./... --coverprofile out/coverage.dat && go tool cover -html=out/coverage.dat -o out/cover.html
+For tests & coverage:
+> go test ./... && go test ./... --coverprofile out/coverage.dat && go tool cover -html=out/coverage.dat -o out/cover.html
 
-Tests:
+Then open out/cover.html
+
+## Tests
 ### basic
         input: [10, 7, 12, 5, 8, 11, 9],
         expected: [5, 11]
@@ -60,8 +62,8 @@ Tests:
         expected: [5, 4]
     
 ### yield_test 
-        input: [100, 104, 1, 3], //Prefer 1-4 ($4 but +300%) over 100-104 ($4 but only 4%)
-        expected: [1, 4]
+        input: [100, 104, 1, 3], //Prefer 1-3 ($3 but +300%) over 100-104 ($4 but only 4%)
+        expected: [1, 3]
     
 ## random_full_day
 Used a random generator to create a [JSON of a full day trading](full_day_random.json)

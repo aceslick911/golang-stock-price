@@ -4,9 +4,7 @@ import (
 	"fmt"
 )
 
-func get_max_profit() []int {
-
-	prices := []int{10, 7, 12, 5, 8, 11, 9}
+func get_max_profit(prices []int) []int {
 
 	fmt.Println("Prices", prices)
 
@@ -41,5 +39,6 @@ func get_max_profit() []int {
 }
 
 func main() {
-	get_max_profit()
+	prices := []int{10, 7, 12, 5, 8, 11, 9}
+	get_max_profit(prices)
 }

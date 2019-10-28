@@ -10,7 +10,7 @@ const maxVariance = 2;
 
 const fs = require('fs')
 
-const saved_data_file = './full_day_random.json'
+const saved_data_file = './src/js/full_day_random.json'
 
 const generate_new_data = false // False will use the json file saved, true will generate a new random walk
 

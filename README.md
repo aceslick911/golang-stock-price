@@ -26,7 +26,7 @@ Basically, I would prefer to:
 I created a random walk generator to assert my algorithms accuracy.
 
 See screenshot below:
-[![Javascript output text](javascript_test_output.png "Logo Title Text 1")](javascript_test_output.png)
+[![Javascript output text](img/javascript_test_output.png "Logo Title Text 1")](img/javascript_test_output.png)
 
 
 Finally, the algorithm was re-written in goLang
@@ -34,11 +34,14 @@ Finally, the algorithm was re-written in goLang
 ## How to run
 
 Node:
-> yarn install && node stock.js
+> yarn install && yarn dev
 
 
 GoLang:
-> go build && ./lattitude-test
+> go build -o bin/lattitude src/go/stock.go && bin/lattitude 
+
+For coverage:
+> go test --coverprofile coverage.dat && go tool cover -html=coverage.dat -o cover.html
 
 Tests:
 ## basic

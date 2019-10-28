@@ -9,5 +9,8 @@
   "private": true,
   "dependencies": {
     "asciichart": "^1.5.9"
+  },
+  "scripts": {
+    "dev": "node src/js/stock.js"
   }
 }

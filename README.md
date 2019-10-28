@@ -43,6 +43,10 @@ For tests & coverage:
 
 Then open out/cover.html
 
+Docker:
+> docker build --rm . -t stock
+> docker run -i --rm --name stock stock sh
+
 ## Tests
 ### basic
         input: [10, 7, 12, 5, 8, 11, 9],

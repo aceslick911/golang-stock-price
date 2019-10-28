@@ -74,6 +74,9 @@ import (
         "fmt"
 )
 
+const MaxInt = int(^uint(0) &gt;&gt; 1)
+const MinInt = -MaxInt - 1
+
 func get_max_profit(prices []int) []int <span class="cov8" title="1">{
 
         fmt.Println("Prices", prices)
@@ -81,15 +84,15 @@ func get_max_profit(prices []int) []int <span class="cov8" title="1">{
         best_buy := prices[0]
         best_sell := prices[1]
 
-        candidate_buy := 9999999 //math.Inf(1)
-        candidate_sell := -1     //math.Inf(-1)
+        candidate_buy := MaxInt
+        candidate_sell := MinInt
 
         for index, price := range prices </span><span class="cov8" title="1">{
                 fmt.Println("price", price, index)
 
                 if price &lt; candidate_buy </span><span class="cov8" title="1">{
                         candidate_buy = price
-                        candidate_sell = -1 //math.Inf(-1)
+                        candidate_sell = MinInt
                 }</span>
 
                 <span class="cov8" title="1">if price &gt; candidate_sell </span><span class="cov8" title="1">{

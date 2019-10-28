@@ -1,5 +1,3 @@
-# - Still under development - please do not review until this message is removed!
-
 # Lattitude Stock Price Test
 Angelo Perera
 

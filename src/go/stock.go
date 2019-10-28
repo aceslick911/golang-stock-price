@@ -1,25 +1,16 @@
 package main
 
-import (
-	"fmt"
-)
-
 const MaxInt = int(^uint(0) >> 1)
 const MinInt = -MaxInt - 1
 
 func get_max_profit(prices []int) []int {
-
-	fmt.Println("Prices", prices)
-
 	best_buy := prices[0]
 	best_sell := prices[1]
 
 	candidate_buy := MaxInt
 	candidate_sell := MinInt
 
-	for index, price := range prices {
-		fmt.Println("price", price, index)
-
+	for _, price := range prices {
 		if price < candidate_buy {
 			candidate_buy = price
 			candidate_sell = MinInt
@@ -34,8 +25,6 @@ func get_max_profit(prices []int) []int {
 			best_sell = candidate_sell
 		}
 	}
-
-	fmt.Println("Solution", best_buy, best_sell)
 
 	return []int{best_buy, best_sell}
 

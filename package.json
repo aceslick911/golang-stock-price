@@ -4,7 +4,7 @@
   "description": "trading test",
   "main": "stock.js",
   "repository": "https://github.com/aceslick911/lattitude-test.git",
-  "author": "Angelo Perera <angeloperera@gmail.com>",
+  "author": "Angelo Perera <angeloREMOVEMEperera@gmail.com>",
   "license": "MIT",
   "private": true,
   "dependencies": {

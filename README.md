@@ -1,6 +1,7 @@
 # goLang Stock Price Algorithm
 (Formerly a coding challenge for a undisclosed company)
-Angelo Perera
+
+By Angelo Perera
 
 ## Information
 Languages used: Javascript, GoLang.

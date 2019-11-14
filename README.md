@@ -1,4 +1,5 @@
-# Lattitude Stock Price Test
+# goLang Stock Price Algorithm
+(Formerly a coding challenge for a undisclosed company)
 Angelo Perera
 
 ## Information
